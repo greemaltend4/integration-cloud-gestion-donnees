@@ -7,11 +7,21 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json()); // Updated to use express.json() directly
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/integration-cloud', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000, // Allows 5 seconds to select an available server
-}).then(() => console.log('MongoDB connected...')).catch(err => console.log(err));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/integration-cloud', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000, // Allows 5 seconds to select an available server
+    });
+    console.log('MongoDB connected...');
+  } catch (err) {
+    console.log(err);
+    process.exit(1); // Exit the process with failure
+  }
+};
+
+connectDB();
 
 // Start the server
 app.listen(PORT, () => {
