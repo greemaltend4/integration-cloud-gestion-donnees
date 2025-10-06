@@ -19,7 +19,7 @@ const connectDB = async () => {
       return;
     } catch (err) {
       console.error(`Attempt ${i + 1}: Failed to connect to MongoDB: ${err.message}`);
-      console.error('Ensure your MongoDB URI is correct and the server is up.');
+      console.error('Ensure your MongoDB URI is correct and the server is running.');
       if (i === 4) { // Last attempt
         console.error('Max retries reached. Exiting...');
         console.error(err);
