@@ -16,8 +16,8 @@ const connectDB = async () => {
     });
     console.log('MongoDB connected...');
   } catch (err) {
-    console.error('Error connecting to MongoDB:', err.message);
-    console.error('Please check your MongoDB URI and ensure the database server is running.');
+    console.error('Failed to connect to MongoDB:', err.message);
+    console.error('Ensure your MongoDB URI is correct and the server is up.');
     process.exit(1); // Exit the process with failure
   }
 };
