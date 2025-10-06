@@ -18,9 +18,10 @@ const connectDB = async () => {
       console.log('MongoDB connected...');
       return;
     } catch (err) {
-      console.error(`Attempt ${i + 1}: Failed to connect to MongoDB:`, err.message);
+      console.error(`Attempt ${i + 1}: Failed to connect to MongoDB: ${err.message}`);
       console.error('Ensure your MongoDB URI is correct and the server is up.');
       if (i === 4) { // Last attempt
+        console.error('Max retries reached. Exiting...');
         console.error(err);
         process.exit(1); // Exit the process with failure
       }
