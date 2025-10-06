@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 // Connectez-vous à MongoDB
-mongoose.connect('mongodb://localhost:27017/integration-cloud', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/integration-cloud', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 5000, // Allows 5 seconds to select an available server
