@@ -18,6 +18,8 @@ const connectDB = async () => {
   } catch (err) {
     console.error('Failed to connect to MongoDB:', err.message);
     console.error('Ensure your MongoDB URI is correct and the server is up.');
+    // Log the entire error object for detailed debugging
+    console.error(err);
     process.exit(1); // Exit the process with failure
   }
 };
