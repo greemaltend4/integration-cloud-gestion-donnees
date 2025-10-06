@@ -7,14 +7,14 @@ const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
-// Connectez-vous à MongoDB
+// Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/integration-cloud', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 5000, // Allows 5 seconds to select an available server
-}).then(() => console.log('MongoDB connecté...')).catch(err => console.log(err));
+}).then(() => console.log('MongoDB connected...')).catch(err => console.log(err));
 
-// Démarrez le serveur
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
